@@ -42,6 +42,7 @@ app.get('/public', function(req, res) {
 app.get("/", function(req, res){
   res.send('Welcome to the Poop Logger!');
 });
-app.listen(8000, function () {
-  console.log('Example app listening on port 3000!');
+var port = process.env.PORT || 8000;
+app.listen(port, function () {
+  console.log('Example app listening on port:',port);
 })
