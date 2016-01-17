@@ -18,7 +18,7 @@ The biggest challenge I ran into during this competition was formulating an idea
 
 My other major challenge was an accident: this morning I was working on the WatchApp, when my computer ran out of power. When I rebooted, all of the files in my project directory (including my git repository) were corrupted. I had not yet created a remote repository, so all my progress was lost. I was not shaken, however, and I was able to use the C tricks I learned the first time around to rebuild all that I had lost within an hour or two.
 
-A small inconvenience, but I had originally planned to use my free domain from domain.com to link to the dashboard, but my domain-name has not yet been setup. 
+A small inconvenience, but I had originally planned to use my free domain from domain.com to link to the dashboard, but my domain-name has not yet been setup. I registered for pooplogger.com.
 ## Accomplishments that I'm proud of
 I overcame all of the major challenges I came across in the course of this hack: the inability to come up with a good idea with my original group, and the loss of my work. As a solo developer, I also think that I did a pretty good job on this large and multifaceted project.
 I'm also proud of this idea: it is simple, yet could have some significant implications for gastroenterological healthcare and research.
