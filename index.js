@@ -89,9 +89,8 @@ app.get("/fetchTimeofday", function(req, res){
     if (err) { return def.reject(err); }
     plotdata = [];
     for(i in data){
-      plotdata.push({name: data[i]._id, y: data[i].count});
+      plotdata.push({name: data[i]._id+":00", y: data[i].count});
     }
-    plotdata.sort(function(a, b){return a[0]-b[0]});
     res.send(JSON.stringify(plotdata));
   });
 });
