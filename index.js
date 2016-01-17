@@ -8,7 +8,12 @@ app.use(bodyParser.json()); // for parsing application/json
 app.use(bodyParser.urlencoded({ extended: true })); // for parsing application/x-www-form-urlencoded
 //Load Env Data
 var env = require('node-env-file');
-env(".env")
+try{
+  env(".env")
+}
+catch(e){
+  console.log("Couldn't get env file", e)
+}
 mongoose.connect(process.env.MONGOURL);
 //Schemas
 var sightingSchema = mongoose.Schema({
