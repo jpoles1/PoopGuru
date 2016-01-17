@@ -14,7 +14,7 @@ try{
 catch(e){
   console.log("Couldn't get env file", e)
 }
-mongoose.connect(process.env.MONGOURL);
+mongoose.connect(process.env.MONGOLAB_URI);
 //Schemas
 var sightingSchema = mongoose.Schema({
     bristol: Number,
