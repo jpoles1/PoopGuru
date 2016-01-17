@@ -18,7 +18,7 @@ mongoose.connect(process.env.MONGOLAB_URI);
 //Schemas
 var sightingSchema = mongoose.Schema({
     bristol: Number,
-    date: String,
+    date: Date,
     dayofweek: String
 });
 var weekday = new Array(7);
@@ -33,8 +33,8 @@ var Sightings = mongoose.model('sightings', sightingSchema);
 var db = mongoose.connection;
 app.post("/tracker", function(req, res){
   var today = new Date();
-  var caldate = (today.getMonth()+1)+'/'+today.getDate+'/'+today.getFullYear()
-  var turd = new Sightings({bristol: req.query.bristol, date: caldate, hour: today.getHours(), dayofweek: weekday[today.getDay()]})
+  console.log("new log:", req.query.bristol)
+  var turd = new Sightings({bristol: req.query.bristol, date: today, hour: today.getHours(), dayofweek: weekday[today.getDay()]})
   turd.save(function(err) {
     if (err) throw err;
     console.log('User saved successfully!');
