@@ -19,6 +19,7 @@
     "mongodb": "^2.0.55",
     "mongoose": "^4.3.6",
     "mongoskin": "^2.0.3",
+    "mustache-express": "^1.2.2",
     "node-env-file": "^0.1.8"
   }
 }

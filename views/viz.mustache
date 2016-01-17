@@ -1,0 +1,95 @@
+<html>
+  <head>
+    <title>Poop Logger - Your Handy Turd Tracker</title>
+    <script src="http://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="https://code.highcharts.com/stock/highstock.js"></script>
+    <script src="/public/js/viz.js"></script>
+    <style>
+      body{
+        padding-top: 40px;
+        padding-left: 10%;
+        padding-right: 10%;
+        background-color: #AA5500
+;
+      }
+      #header{
+        text-align: center;
+        background-color: #eee;
+        border-radius: 15px;
+        padding: 25px;
+        color: #222;
+        margin: auto;
+        font-size: 32px;
+        font-weight: bold;
+      }
+      .plotbox{
+        margin-top: 50px;
+        background-color: #eee;
+        padding: 15px;
+        border-radius: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="header">Pebble Poop Logger<br>Your Handy Turd Tracker!</div>
+    <div id="timeplot" class="plotbox" style="width:100%; height:400px;"></div>
+    <div id="dowplot" class="plotbox" style="width:100%; height:400px;"></div>
+    <div id="timeofday" class="plotbox" style="width:100%; height:400px;"></div>
+    <script type="text/javascript">
+    $(function() {
+      $.getJSON("/fetchTimeseries", function(data){
+        plotdata = []
+        for(i in data){
+          dateobj = new Date(data[i].date);
+          plotdata.push([dateobj.getTime(), data[i].bristol])
+        }
+        plotdata.sort(function(a, b){return a[0]-b[0]});
+        console.log(plotdata)
+        $('#timeplot').highcharts('StockChart', {
+              title : {
+                  text : 'Bristol Score vs Time'
+              },
+              series : [{
+                  name : 'Bristol Score',
+                  data : plotdata
+              }]
+          });
+      });
+      $.getJSON("/fetchdow", function(data){
+        $('#dowplot').highcharts({
+              chart: {
+                type: 'column'
+              },
+              xAxis: {
+                  type: 'category'
+              },
+              title : {
+                  text : 'Common Days of the Week'
+              },
+              series : [{
+                  name : 'Day of Week',
+                  data : data
+              }]
+          });
+      });
+      $.getJSON("/fetchTimeofday", function(data){
+        $('#timeofday').highcharts({
+              chart: {
+                type: 'column'
+              },
+              xAxis: {
+                  type: 'category'
+              },
+              title : {
+                  text : 'Time of Day'
+              },
+              series : [{
+                  name : 'Time',
+                  data : data
+              }]
+          });
+      });
+    });
+    </script>
+  </body>
+</html>
