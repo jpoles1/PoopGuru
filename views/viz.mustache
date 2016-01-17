@@ -51,8 +51,21 @@
               },
               series : [{
                   name : 'Bristol Score',
-                  data : plotdata
-              }]
+                  data : plotdata,
+                  lineWidth : 0,
+                  marker : {
+                    enabled : true,
+                    radius : 2
+                  },
+              }],
+              yAxis: {
+                plotLines:[{
+                  value: 4,
+                  color: '#ff0000',
+                  width: 2,
+                  label:{text:'Ideal'}
+                }]
+            }
           });
       });
       $.getJSON("/fetchdow", function(data){
@@ -73,6 +86,7 @@
           });
       });
       $.getJSON("/fetchTimeofday", function(data){
+        console.log(data)
         $('#timeofday').highcharts({
               chart: {
                 type: 'column'
